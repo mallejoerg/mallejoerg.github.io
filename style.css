@@ -23,10 +23,9 @@ body {
 }
 
 .about, .setlist, .gallery, .contact, footer {
-    max-width: 800px;
+    max-width: 900px;
     margin: 2rem auto;
     text-align: justify;
-    border-radius: 8px;
 }
 
 .image-row {
