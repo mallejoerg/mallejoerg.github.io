@@ -56,3 +56,30 @@ footer {
     padding: 1rem;
     background-color: #111;
 }
+
+.hero-image {
+    text-align: center;
+    margin: 2rem 0;
+}
+.full-image {
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+.gallery {
+    text-align: center;
+    margin: 2rem 0;
+}
+.image-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+.image-row img {
+    width: 30%;
+    height: auto;
+    border-radius: 8px;
+}
