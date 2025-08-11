@@ -30,14 +30,22 @@
     nav a{color:var(--text);text-decoration:none;padding:8px 10px;border-radius:10px;opacity:.9}
     nav a:hover{background:#141414;opacity:1}
     nav a.active{background:var(--accent);color:#000;font-weight:600}
+    /* Hover auch für aktiven Link in Pink */
+    nav a:hover,
+    nav a.active:hover{background:var(--accent);color:#000}
+
     .menu-btn{display:none}
-    /* Mobile-Menü standardmäßig verstecken (auch auf Desktop) */
-.mobile-menu { display: none; }
+    /* Mobile-Menü standardmäßig verstecken */
+    .mobile-menu{display:none}
+
     .hero{padding:clamp(48px,8vw,96px) 0}
     .hero-wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(20px,4vw,44px);align-items:center}
     .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:var(--pad);box-shadow:0 20px 40px rgba(0,0,0,.25)}
     .cta{display:inline-block;padding:12px 18px;border-radius:999px;background:var(--accent);color:#000;text-decoration:none;font-weight:700}
     .cta:hover{filter:brightness(.95)}
+    .to-top{display:inline-block;margin-top:12px;color:var(--muted);text-decoration:none}
+    .to-top:hover{color:#fff;text-decoration:underline}
+
     section{padding:clamp(34px,6vw,70px) 0}
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
     .grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
@@ -60,7 +68,7 @@
       </a>
       <nav aria-label="Hauptnavigation">
         <a href="#about">Info</a>
-        <a href="#dates">Na, wo isser denn?</a>
+        <a href="#dates">Gigs</a>
         <a href="#impressions">Impressionen</a>
         <a href="#past">Vergangene Termine</a>
         <a href="#booking">Booking & Social</a>
@@ -69,7 +77,7 @@
     </div>
     <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation mobil">
       <a href="#about">Info</a>
-      <a href="#dates">Na, wo isser denn?</a>
+      <a href="#dates">Gigs</a>
       <a href="#impressions">Impressionen</a>
       <a href="#past">Vergangene Termine</a>
       <a href="#booking">Booking & Social</a>
@@ -85,6 +93,7 @@
           <p>Mallejörg liefert kleine und große DJ-Sets aus den Genres Elektro, Hip-Hop, 80er/90er-Hits oder Punkrock. Für 20 Minuten oder auch einen ganzen Abend. Inklusive Schnapsrunde, Ballons, Konfettikanone und trashiger Bühnendeko.</p>
           <p>Der perfekte Stilbruch für Festivals in den Umbaupausen oder für den Aftershow-Abriss oder als Preshow / Aftershow-Act. Trash as trash can!</p>
           <p>Keine Mallehits. Keine sexistischen, rassistischen oder homophoben Inhalte. Einfach nur Party. Neben privaten Shows trat er u.a. beim APEN AIR Festival, beim Connect Festival oder beim Pixxen Festival auf.</p>
+          <a class="to-top" href="#top">↑ Nach oben</a>
         </div>
         <div class="card">
           <img src="https://mallejoerg.github.io/mallejoerg/assets/hero1.jpg" alt="Mallejörg live on stage" style="width:100%;height:auto;border-radius:12px"/>
@@ -103,6 +112,7 @@
           <li><del>30.08.2025 – Seker Huus, Uplengen-Hollen</del></li>
           <li>26.10.2025 – Mokum, Berlin – Too Much of Everything – Night (80s, 90s, Indie, Electro, Pop, Trash)</li>
         </ul>
+        <a class="to-top" href="#top">↑ Nach oben</a>
       </div>
     </section>
 
@@ -117,6 +127,7 @@
           <img src="https://mallejoerg.github.io/mallejoerg/assets/fiebertraeumchens_mallejoerg_insta.png" alt="Mallejörg – fieberträumchens"/>
           <img src="https://mallejoerg.github.io/mallejoerg/assets/mallejoerg_hut.jpg" alt="Mallejörg Hut"/>
         </div>
+        <a class="to-top" href="#top">↑ Nach oben</a>
       </div>
     </section>
 
@@ -131,6 +142,7 @@
           <img src="https://mallejoerg.github.io/mallejoerg/assets/apenair.jpg" alt="APEN AIR"/>
           <img src="https://mallejoerg.github.io/mallejoerg/assets/sekerhuus2.jpg" alt="Punkrock-Schelle mit Mallejoerg und B-Shock"/>
         </div>
+        <a class="to-top" href="#top">↑ Nach oben</a>
       </div>
     </section>
 
@@ -142,6 +154,7 @@
           <p><strong>E-Mail/Booking</strong></p>
           <p><a href="https://instagram.com/mallejoerg" target="_blank" rel="noopener">Instagram</a> · <a href="https://mallejoerg.github.io/mallejoerg/assets/mallejoerg_bundle.zip">Download Pressepaket</a></p>
         </div>
+        <a class="to-top" href="#top">↑ Nach oben</a>
       </div>
     </section>
 
@@ -151,6 +164,7 @@
         <div class="card">
           <img src="https://mallejoerg.github.io/mallejoerg/assets/mallejoerg_stage.jpg" alt="Mallejörg stage decoration" style="width:100%;height:auto;border-radius:12px"/>
         </div>
+        <a class="to-top" href="#top">↑ Nach oben</a>
       </div>
     </section>
   </main>
@@ -166,28 +180,26 @@
     const btn = document.getElementById('menuBtn');
     const menu = document.getElementById('mobileMenu');
     btn?.addEventListener('click', ()=>{
+      if (window.innerWidth > 700) return; // nur mobil toggeln
       const open = menu.classList.toggle('show');
       btn.setAttribute('aria-expanded', String(open));
     });
     menu?.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=> menu.classList.remove('show')));
 
-// Scrollspy
-const ids = ['about', 'dates', 'impressions', 'past', 'booking'];
-const sections = ids.map(id => document.getElementById(id));
-const links = [...document.querySelectorAll('nav a')];
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      // Entfernt bei allen Links die aktive Klasse
-      links.forEach(l => l.classList.remove('active'));
-      // Aktiviert nur den Link, der exakt zu diesem Abschnitt gehört
-      const activeLink = links.find(l => l.getAttribute('href') === `#${e.target.id}`);
-      if (activeLink) {
-        activeLink.classList.add('active');
-      }
-    }
-  });
-}, { rootMargin: '-50% 0px -50% 0px', threshold: 0 });
-sections.forEach(s => s && io.observe(s));
+    // Scrollspy (präziser, überschreibt Hover nicht)
+    const ids = ['about','dates','impressions','past','booking'];
+    const sections = ids.map(id=>document.getElementById(id));
+    const links = [...document.querySelectorAll('nav a')];
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          links.forEach(l=>l.classList.remove('active'));
+          const activeLink = links.find(l => l.getAttribute('href') === `#${e.target.id}`);
+          if (activeLink) activeLink.classList.add('active');
+        }
+      })
+    }, { rootMargin: '-50% 0px -50% 0px', threshold: 0 });
+    sections.forEach(s=> s && io.observe(s));
+  </script>
 </body>
 </html>
