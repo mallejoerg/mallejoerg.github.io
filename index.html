@@ -12,6 +12,7 @@
     :root{
       --bg:#000; --text:#fff; --muted:#a9a9a9; --accent:#fe00fe; /* exakt Logo-Pink */
       --card:#0f0f10; --border:#1d1d1f; --radius:16px; --maxw:1100px; --pad:clamp(18px,3vw,28px);
+      --thumb: clamp(110px, 16vw, 160px); /* responsive Thumbnail-Kante */
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -32,7 +33,7 @@
     header{
       position:fixed; top:0; left:0; width:100%; z-index:50;
       backdrop-filter:saturate(160%) blur(10px);
-      background: rgba(0,0,0,.60); /* sichtbar beim Seitenstart */
+      background: rgba(0,0,0,.60);
       border-bottom:1px solid var(--border);
       transition: background .3s ease, box-shadow .3s ease;
     }
@@ -41,14 +42,11 @@
     .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0}
     .brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
     .brand img{height:36px;width:auto}
-    .brand strong{font-family:"Saira Condensed";font-size:1.4rem;letter-spacing:.4px}
     nav{display:flex;gap:6px}
     nav a{color:var(--text);text-decoration:none;padding:8px 10px;border-radius:10px;opacity:.9}
     nav a:hover{background:#141414;opacity:1}
     nav a.active{background:var(--accent);color:#000;font-weight:600}
-    /* Hover auch für aktiven Link in Logo-Pink */
-    nav a:hover,
-    nav a.active:hover{background:var(--accent);color:#000}
+    nav a:hover, nav a.active:hover{background:var(--accent);color:#000}
 
     .menu-btn{display:none}
     .mobile-menu{display:none}
@@ -83,136 +81,72 @@
       .mobile-menu a:hover{background:#181818}
       .mobile-menu.show{display:block}
     }
-    .thumb {
-  width: 150px;
-  height: 150px;
-  overflow: hidden;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  position: relative;
-  display: block;            /* <a> wird Block, damit 150×150 greift */
-}
 
-.thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;         /* schneidet passend zu */
-  transition: transform .25s ease;
-  display: block;
-}
+    /* Insta-Icon im Header */
+    .insta-btn { color: var(--text); display: inline-flex; align-items: center; margin: 0 8px; transition: color .3s ease; }
+    .insta-btn:hover { color: var(--accent); }
+    .insta-btn svg { width: 20px; height: 20px; display: block; }
 
-.thumb:hover img {
-  transform: scale(1.8);     /* Zoom im Rahmen */
-}
+    /* Schicke Buttons unten (Insta & Download & Booking) */
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:999px; text-decoration:none;
+         font-weight:700; border:1px solid var(--border); background:var(--card); color:#fff;
+         transition:transform .12s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease}
+    .btn svg{ width:18px; height:18px; display:block }
+    .btn:hover{ transform:translateY(-1px); box-shadow:0 10px 20px rgba(0,0,0,.25) }
+    .btn-ig{ border-color: var(--accent); background: linear-gradient(90deg, rgba(254,0,254,.15), rgba(254,0,254,.05)) }
+    .btn-ig:hover{ background: linear-gradient(90deg, rgba(254,0,254,.25), rgba(254,0,254,.1)) }
+    .btn-outline{ background:transparent }
+    .btn-outline:hover{ background:rgba(255,255,255,.06) }
+    .btn-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:8px }
+    @media (max-width:700px){ .btn{ width:100%; justify-content:center; max-width:320px } .btn-row{flex-direction:column; align-items:center} }
 
-/* Grid für Thumbs – 150er Kacheln mit Abstand */
-.gallery.grid-5 {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 12px;
-}
-      .insta-btn {
-    color: var(--text);
-    display: inline-flex;
-    align-items: center;
-    margin: 0 8px;
-    transition: color 0.3s ease;
-  }
-  .insta-btn:hover {
-    color: var(--accent);
-  }
-  .insta-btn svg {
-    width: 20px;
-    height: 20px;
-    display: block;
-  }
-    .btn{
-  display:inline-flex; align-items:center; gap:10px;
-  padding:12px 16px; border-radius:999px; text-decoration:none;
-  font-weight:700; border:1px solid var(--border);
-  background:var(--card); color:#fff;
-  transition:transform .12s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
-}
-.btn svg{ width:18px; height:18px; display:block }
-.btn:hover{ transform:translateY(-1px); box-shadow:0 10px 20px rgba(0,0,0,.25) }
-.btn-ig{ border-color: var(--accent);
-  background: linear-gradient(90deg, rgba(254,0,254,.15), rgba(254,0,254,.05)); }
-.btn-ig:hover{ background: linear-gradient(90deg, rgba(254,0,254,.25), rgba(254,0,254,.1)) }
-.btn-outline{ background:transparent }
-.btn-outline:hover{ background:rgba(255,255,255,.06) }
-.btn-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:8px }
-@media (max-width:700px){ .btn{ width:100%; justify-content:center } }
-      .insta-btn, .booking-btn {
-    color: var(--text);
-    display: inline-flex;
-    align-items: center;
-    margin: 0 8px;
-    transition: color 0.3s ease;
-    text-decoration: none;
-    gap: 6px;
-  }
-  .insta-btn:hover, .booking-btn:hover {
-    color: var(--accent);
-  }
-  .insta-btn svg {
-    width: 20px;
-    height: 20px;
-    display: block;
-  }
-  @media (max-width: 700px) {
-    .mobile-menu .insta-btn, .mobile-menu .booking-btn {
-      padding: 10px 12px;
-      display: flex;
-      align-items: center;
+    /* Quadratische Thumbnails + Lightbox */
+    .thumb { width:var(--thumb); height:var(--thumb); overflow:hidden; border-radius:12px; border:1px solid var(--border); position:relative; display:block; cursor:zoom-in }
+    .thumb img { width:100%; height:100%; object-fit:cover; display:block }
+
+    /* Lightbox Overlay */
+    #lightbox {
+      position: fixed; inset: 0; background: rgba(0,0,0,.88);
+      display: none; align-items: center; justify-content: center;
+      z-index: 1000; cursor: zoom-out; padding: 4vh 4vw;
     }
-  }
-    @media (max-width: 700px) {
-  .btn-row {
-    flex-direction: column;
-    align-items: center;
-  }
-  .btn-row .btn {
-    width: 100%;
-    justify-content: center;
-    max-width: 320px; /* Optional: verhindert zu breite Buttons */
-  }
-}
+    #lightbox.show { display: flex; }
+    #lightbox img { max-width: 80vw; max-height: 80vh; border-radius:12px; box-shadow:0 20px 40px rgba(0,0,0,.5) }
   </style>
 </head>
 <body>
   <header>
     <div class="container nav">
       <a class="brand" href="#top" aria-label="Startseite">
-        <img src="https://mallejoerg.github.io/assets/logo_pink1000.png" alt="Mallejörg Logo" />
+        <img src="/assets/logo_pink1000.png" alt="Mallejörg Logo" />
       </a>
-     <nav aria-label="Hauptnavigation">
-  <a href="https://instagram.com/mallejoerg" target="_blank" class="insta-btn" aria-label="Instagram">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
-      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-    </svg>
-  </a>
-       <a href="#about">Info</a>
-  <a href="#dates">Gigs</a>
-  <a href="#fotos">Fotos</a>
-  <a href="#past">Vergangene Termine</a>
-  <a href="#booking">Booking & Social</a>
-</nav>
+      <nav aria-label="Hauptnavigation">
+        <a href="https://instagram.com/mallejoerg" target="_blank" class="insta-btn" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+        <a href="#about">Info</a>
+        <a href="#dates">Gigs</a>
+        <a href="#fotos">Fotos</a>
+        <a href="#past">Vergangene Termine</a>
+        <a href="#booking">Booking & Social</a>
+      </nav>
       <button class="menu-btn" id="menuBtn" aria-controls="mobileMenu" aria-expanded="false">Menü</button>
     </div>
     <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation mobil">
       <a href="https://instagram.com/mallejoerg" target="_blank" class="insta-btn" aria-label="Instagram">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-       stroke-linecap="round" stroke-linejoin="round">
-    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-  </svg>
-</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+      </a>
       <a href="#about">Info</a>
       <a href="#dates">Gigs</a>
-      <a href="#Fotos">Fotos</a>
+      <a href="#fotos">Fotos</a>
       <a href="#past">Vergangene Termine</a>
       <a href="#booking">Booking & Social</a>
     </div>
@@ -230,7 +164,7 @@
           <a class="to-top" href="#top">↑ Nach oben</a>
         </div>
         <div class="card">
-          <img src="https://mallejoerg.github.io/assets/hero1.jpg" alt="Mallejörg live on stage" style="width:100%;height:auto;border-radius:12px"/>
+          <img src="/assets/hero1.jpg" alt="Mallejörg live on stage" style="width:100%;height:auto;border-radius:12px"/>
         </div>
       </div>
     </section>
@@ -250,56 +184,38 @@
       </div>
     </section>
 
-    <!-- Impressionen (5 Bilder) -->
+    <!-- Impressionen (Fotos) -->
     <section id="fotos">
       <div class="container">
         <h2>Momente</h2>
-       <div class="gallery grid-5">
-  <a class="thumb" href="/assets/mallejoerg_gr_foto_ninareinert.jpg" target="_blank" rel="noopener">
-    <img src="/assets/mallejoerg_gr_foto_ninareinert.jpg" alt="Mallejörg – Foto Nina Reinert">
-  </a>
-  <a class="thumb" href="/assets/received_968001044347864.jpeg" target="_blank" rel="noopener">
-    <img src="/assets/received_968001044347864.jpeg" alt="Mallejörg">
-  </a>
-  <a class="thumb" href="/assets/mallejoerg_by_punkrockt---basti.jpg" target="_blank" rel="noopener">
-    <img src="/assets/mallejoerg_by_punkrockt---basti.jpg" alt="Mallejörg by Punkrockt!-Basti">
-  </a>
-  <a class="thumb" href="/assets/fiebertraeumchens_mallejoerg_insta.png" target="_blank" rel="noopener">
-    <img src="/assets/fiebertraeumchens_mallejoerg_insta.png" alt="Mallejörg – fieberträumchens">
-  </a>
-  <a class="thumb" href="/assets/mallejoerg_hut.jpg" target="_blank" rel="noopener">
-    <img src="/assets/mallejoerg_hut.jpg" alt="Mallejörg Hut">
-  </a>
-</div>
-    </section>
-
-    <!-- Vergangene Termine (Auszug) -->
-    <section id="past">
-      <div class="container">
-        <h2>Vergangene Termine (Auszug)</h2>
-     <div class="gallery grid-5">
-  <a class="thumb" href="/assets/pixxen.jpg" target="_blank" rel="noopener">
-    <img src="/assets/pixxen.jpg" alt="Pixxen Festival">
-  </a>
-  <a class="thumb" href="/assets/connect.jpg" target="_blank" rel="noopener">
-    <img src="/assets/connect.jpg" alt="Connect Festival">
-  </a>
-  <a class="thumb" href="/assets/sekerhuus.jpg" target="_blank" rel="noopener">
-    <img src="/assets/sekerhuus.jpg" alt="Sekerhuus">
-  </a>
-  <a class="thumb" href="/assets/apenair.jpg" target="_blank" rel="noopener">
-    <img src="/assets/apenair.jpg" alt="APEN AIR">
-  </a>
-  <a class="thumb" href="/assets/sekerhuus2.jpg" target="_blank" rel="noopener">
-    <img src="/assets/sekerhuus2.jpg" alt="Punkrock-Schelle mit Mallejoerg und B-Shock">
-  </a>
-</div>
+        <div class="gallery grid-5">
+          <a class="thumb" href="/assets/mallejoerg_gr_foto_ninareinert.jpg"><img src="/assets/mallejoerg_gr_foto_ninareinert.jpg" alt="Mallejörg – Foto Nina Reinert"></a>
+          <a class="thumb" href="/assets/received_968001044347864.jpeg"><img src="/assets/received_968001044347864.jpeg" alt="Mallejörg"></a>
+          <a class="thumb" href="/assets/mallejoerg_by_punkrockt---basti.jpg"><img src="/assets/mallejoerg_by_punkrockt---basti.jpg" alt="Mallejörg by Punkrockt!-Basti"></a>
+          <a class="thumb" href="/assets/fiebertraeumchens_mallejoerg_insta.png"><img src="/assets/fiebertraeumchens_mallejoerg_insta.png" alt="Mallejörg – fieberträumchens"></a>
+          <a class="thumb" href="/assets/mallejoerg_hut.jpg"><img src="/assets/mallejoerg_hut.jpg" alt="Mallejörg Hut"></a>
+        </div>
         <a class="to-top" href="#top">↑ Nach oben</a>
       </div>
     </section>
+    
+<!-- Vergangene Termine (Auszug) -->
+<section id="past">
+  <div class="container">
+    <h2>Vergangene Termine (Auszug)</h2>
+    <div class="gallery grid-5">
+      <a class="thumb" href="/assets/pixxen.jpg"><img src="/assets/pixxen.jpg" alt="Pixxen Festival"></a>
+      <a class="thumb" href="/assets/connect.jpg"><img src="/assets/connect.jpg" alt="Connect Festival"></a>
+      <a class="thumb" href="/assets/sekerhuus.jpg"><img src="/assets/sekerhuus.jpg" alt="Sekerhuus"></a>
+      <a class="thumb" href="/assets/apenair.jpg"><img src="/assets/apenair.jpg" alt="APEN AIR"></a>
+      <a class="thumb" href="/assets/sekerhuus2.jpg"><img src="/assets/sekerhuus2.jpg" alt="Punkrock-Schelle mit Mallejoerg und B-Shock"></a>
+    </div>
+    <a class="to-top" href="#top">↑ Nach oben</a>
+  </div>
+</section>
 
-    <!-- Booking / Social / Pressepaket -->
-   <section id="booking">
+<!-- Booking / Social / Pressepaket -->
+<section id="booking">
   <div class="container">
     <h2>Booking / Social / Pressepaket</h2>
 
@@ -307,8 +223,7 @@
       <div class="btn-row">
         <!-- Booking -->
         <a class="btn btn-ig" href="mailto:kontakt@palmbeachbooking.de" target="_blank" rel="noopener" aria-label="Booking">
-          <img src="https://mallejoerg.github.io/assets/pbc_logo_transp_4000.png"
-               alt="Palm Beach Concerts Logo" style="height:35px; display:block;">
+          <img src="/assets/pbc_logo_transp_4000.png" alt="Palm Beach Concerts Logo" style="height:35px; display:block;">
           Booking
         </a>
 
@@ -324,7 +239,7 @@
         </a>
 
         <!-- Download Pressepaket -->
-        <a class="btn btn-ig" href="https://mallejoerg.github.io/assets/mallejoerg_bundle.zip" aria-label="Download Pressepaket">
+        <a class="btn btn-ig" href="/assets/mallejoerg_bundle.zip" aria-label="Download Pressepaket">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -339,48 +254,84 @@
     <a class="to-top" href="#top">↑ Nach oben</a>
   </div>
 </section>
-  </main>
+</main>
 
-  <footer>
-    <div class="container">
-      <small>© 2025 Palm Beach Concerts/Mallejörg // Fotos: Nina Reinert, Susi Adebahr, Punk-Rockt!-Basti, Robin Riot, Simone Otto</small>
-    </div>
-  </footer>
+<footer>
+  <div class="container">
+    <small>© 2025 Palm Beach Concerts/Mallejörg // Fotos: Nina Reinert, Susi Adebahr, Punk-Rockt!-Basti, Robin Riot, Simone Otto</small>
+  </div>
+</footer>
 
-  <script>
-    // Mobile Menü
-    const btn = document.getElementById('menuBtn');
-    const menu = document.getElementById('mobileMenu');
-    btn?.addEventListener('click', ()=>{
-      if (window.innerWidth > 700) return; // nur mobil toggeln
-      const open = menu.classList.toggle('show');
-      btn.setAttribute('aria-expanded', String(open));
+<!-- Lightbox Overlay -->
+<div id="lightbox" aria-hidden="true"></div>
+
+<script>
+  // Mobile Menü
+  const btn = document.getElementById('menuBtn');
+  const menu = document.getElementById('mobileMenu');
+  btn?.addEventListener('click', ()=>{
+    if (window.innerWidth > 700) return; // nur mobil toggeln
+    const open = menu.classList.toggle('show');
+    btn.setAttribute('aria-expanded', String(open));
+  });
+  menu?.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=> menu.classList.remove('show')));
+
+  // Scrollspy (IDs inkl. 'fotos')
+  const ids = ['about','dates','fotos','past','booking'];
+  const sections = ids.map(id=>document.getElementById(id));
+  const links = [...document.querySelectorAll('nav a[href^="#"]')];
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        links.forEach(l=>l.classList.remove('active'));
+        const activeLink = links.find(l => l.getAttribute('href') === `#${e.target.id}`);
+        if (activeLink) activeLink.classList.add('active');
+      }
+    })
+  }, { rootMargin: '-50% 0px -50% 0px', threshold: 0 });
+  sections.forEach(s=> s && io.observe(s));
+
+  // Header Fade beim Scrollen
+  const headerEl = document.querySelector('header');
+  const onScroll = () => {
+    if (window.scrollY > 50) headerEl.classList.add('scrolled');
+    else headerEl.classList.remove('scrolled');
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Lightbox Logik (Klick + kurzer Hover)
+  const lightbox = document.getElementById('lightbox');
+  const openLightbox = (src) => {
+    lightbox.innerHTML = '';
+    const img = document.createElement('img');
+    img.src = src;
+    lightbox.appendChild(img);
+    lightbox.classList.add('show');
+    lightbox.setAttribute('aria-hidden', 'false');
+  };
+  const closeLightbox = () => {
+    lightbox.classList.remove('show');
+    lightbox.setAttribute('aria-hidden', 'true');
+    lightbox.innerHTML = '';
+  };
+  lightbox.addEventListener('click', closeLightbox);
+  document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeLightbox(); });
+
+  document.querySelectorAll('.thumb').forEach(a => {
+    const href = a.getAttribute('href');
+    // Klick öffnet groß
+    a.addEventListener('click', (e)=>{
+      e.preventDefault();
+      openLightbox(href);
     });
-    menu?.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=> menu.classList.remove('show')));
-
-    // Scrollspy (präziser)
-    const ids = ['about','dates','impressions','past','booking'];
-    const sections = ids.map(id=>document.getElementById(id));
-    const links = [...document.querySelectorAll('nav a')];
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          links.forEach(l=>l.classList.remove('active'));
-          const activeLink = links.find(l => l.getAttribute('href') === `#${e.target.id}`);
-          if (activeLink) activeLink.classList.add('active');
-        }
-      })
-    }, { rootMargin: '-50% 0px -50% 0px', threshold: 0 });
-    sections.forEach(s=> s && io.observe(s));
-
-    // Header Fade beim Scrollen
-    const headerEl = document.querySelector('header');
-    const onScroll = () => {
-      if (window.scrollY > 50) headerEl.classList.add('scrolled');
-      else headerEl.classList.remove('scrolled');
-    };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-  </script>
+    // Hover (Desktop) öffnet groß nach kurzem Delay
+    let hoverTimer;
+    a.addEventListener('mouseenter', ()=>{
+      hoverTimer = setTimeout(()=> openLightbox(href), 80);
+    });
+    a.addEventListener('mouseleave', ()=> clearTimeout(hoverTimer));
+  });
+</script>
 </body>
 </html>
