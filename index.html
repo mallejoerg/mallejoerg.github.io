@@ -8,56 +8,115 @@
   <meta name="color-scheme" content="dark" />
   <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@300;400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#000; --text:#fff; --muted:#a9a9a9; --accent:#ff2ea6; --card:#0f0f10; --border:#1d1d1f; --radius:16px; --maxw:1100px; --pad:clamp(18px,3vw,28px);
+  :root {
+    --bg:#000; --text:#fff; --muted:#a9a9a9; --accent:#ff2ea6; --card:#0f0f10; --border:#1d1d1f;
+    --radius:16px; --maxw:1100px; --pad:clamp(18px,3vw,28px);
+  }
+  * { box-sizing:border-box }
+  html,body { height:100% }
+  body {
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    line-height:1.6;
+    scroll-behavior:smooth;
+    padding-top:60px; /* Platz für fixierten Header */
+  }
+  h1,h2,h3 {
+    color:var(--accent);
+    margin:0 0 10px;
+    line-height:1.1;
+    font-family:"Saira Condensed",ui-sans-serif,system-ui,Arial,sans-serif;
+    font-weight:600;
+    letter-spacing:.5px;
+  }
+  h1 { font-size:clamp(2.1rem,4.8vw,3.4rem) }
+  h2 { font-size:clamp(1.6rem,3.2vw,2.4rem) }
+  h3 { font-size:clamp(1.1rem,2.2vw,1.4rem) }
+  p { margin:0 0 12px }
+  .muted { color:var(--muted) }
+  .container {
+    width:min(100% - 32px, var(--maxw));
+    margin-inline:auto;
+  }
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+    backdrop-filter: saturate(160%) blur(10px);
+    background: color-mix(in srgb, var(--bg) 70%, transparent);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 0 }
+  .brand { display:inline-flex; align-items:center; gap:10px; text-decoration:none; color:var(--text) }
+  .brand img { height:36px; width:auto }
+  .brand strong { font-family:"Saira Condensed"; font-size:1.4rem; letter-spacing:.4px }
+  nav { display:flex; gap:6px }
+  nav a { color:var(--text); text-decoration:none; padding:8px 10px; border-radius:10px; opacity:.9 }
+  nav a:hover { background:#141414; opacity:1 }
+  nav a.active { background:var(--accent); color:#000; font-weight:600 }
+  nav a:hover,
+  nav a.active:hover { background:var(--accent); color:#000 }
+
+  .menu-btn { display:none }
+  .mobile-menu { display:none }
+
+  .hero { padding:clamp(48px,8vw,96px) 0 }
+  .hero-wrap { display:grid; grid-template-columns:1.1fr 1fr; gap:clamp(20px,4vw,44px); align-items:center }
+  .card {
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:var(--pad);
+    box-shadow:0 20px 40px rgba(0,0,0,.25);
+  }
+  .cta { display:inline-block; padding:12px 18px; border-radius:999px; background:var(--accent); color:#000; text-decoration:none; font-weight:700 }
+  .cta:hover { filter:brightness(.95) }
+  .to-top { display:inline-block; margin-top:12px; color:var(--muted); text-decoration:none }
+  .to-top:hover { color:#fff; text-decoration:underline }
+
+  section { padding:clamp(34px,6vw,70px) 0 }
+  .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:14px }
+  .grid-5 { display:grid; grid-template-columns:repeat(5,1fr); gap:12px }
+  .grid-2 { display:grid; grid-template-columns:repeat(2,1fr); gap:14px }
+  .gallery img { width:100%; height:auto; border-radius:12px; border:1px solid var(--border) }
+  ul { margin:0; padding-left:18px }
+  li { margin-bottom:6px }
+  del { opacity:.6 }
+  footer { border-top:1px solid var(--border); padding:18px 0; color:var(--muted); font-size:.95rem }
+
+  @media (max-width: 1000px) { .grid-5 { grid-template-columns:repeat(3,1fr) } }
+  @media (max-width: 700px) {
+    .hero-wrap { grid-template-columns:1fr }
+    .grid-3 { grid-template-columns:1fr }
+    .grid-5 { grid-template-columns:1fr }
+    nav { display:none }
+    .menu-btn {
+      display:inline-flex; align-items:center; gap:8px;
+      background:#141414; color:#fff; border:1px solid var(--border);
+      padding:8px 12px; border-radius:10px;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;scroll-behavior:smooth,padding-top:60px;}
-    h1,h2,h3{color:var(--accent);margin:0 0 10px;line-height:1.1;font-family:"Saira Condensed",ui-sans-serif,system-ui,Arial,sans-serif;font-weight:600;letter-spacing:.5px}
-    h1{font-size:clamp(2.1rem,4.8vw,3.4rem)}
-    h2{font-size:clamp(1.6rem,3.2vw,2.4rem)}
-    h3{font-size:clamp(1.1rem,2.2vw,1.4rem)}
-    p{margin:0 0 12px}
-    .muted{color:var(--muted)}
-    .container{width:min(100% - 32px, var(--maxw));margin-inline:auto}
-    header{position:position:fixed;top:0;left:0;width:100%;top:0;z-index:50;backdrop-filter:saturate(160%) blur(10px);background:color-mix(in srgb, var(--bg) 70%, transparent);border-bottom:1px solid var(--border)}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0}
-    .brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
-    .brand img{height:36px;width:auto}
-    .brand strong{font-family:"Saira Condensed";font-size:1.4rem;letter-spacing:.4px}
-    nav{display:flex;gap:6px}
-    nav a{color:var(--text);text-decoration:none;padding:8px 10px;border-radius:10px;opacity:.9}
-    nav a:hover{background:#141414;opacity:1}
-    nav a.active{background:var(--accent);color:#000;font-weight:600}
-    /* Hover auch für aktiven Link in Pink */
-    nav a:hover,
-    nav a.active:hover{background:var(--accent);color:#000}
-
-    .menu-btn{display:none}
-    /* Mobile-Menü standardmäßig verstecken */
-    .mobile-menu{display:none}
-
-    .hero{padding:clamp(48px,8vw,96px) 0}
-    .hero-wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(20px,4vw,44px);align-items:center}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:var(--pad);box-shadow:0 20px 40px rgba(0,0,0,.25)}
-    .cta{display:inline-block;padding:12px 18px;border-radius:999px;background:var(--accent);color:#000;text-decoration:none;font-weight:700}
-    .cta:hover{filter:brightness(.95)}
-    .to-top{display:inline-block;margin-top:12px;color:var(--muted);text-decoration:none}
-    .to-top:hover{color:#fff;text-decoration:underline}
-
-    section{padding:clamp(34px,6vw,70px) 0}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    .grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-    .gallery img{width:100%;height:auto;border-radius:12px;border:1px solid var(--border)}
-    ul{margin:0;padding-left:18px}
-    li{margin-bottom:6px}
-    del{opacity:.6}
-    footer{border-top:1px solid var(--border);padding:18px 0;color:var(--muted);font-size:.95rem}
-    @media (max-width: 1000px){.grid-5{grid-template-columns:repeat(3,1fr)}}
-    @media (max-width: 700px){.hero-wrap{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr}.grid-5{grid-template-columns:1fr}nav{display:none}.menu-btn{display:inline-flex;align-items:center;gap:8px;background:#141414;color:#fff;border:1px solid var(--border);padding:8px 12px;border-radius:10px}.mobile-menu{display:none;position:fixed;inset:60px 12px auto 12px;background:#0b0b0c;border:1px solid var(--border);border-radius:14px;padding:10px;z-index:60}.mobile-menu a{display:block;padding:10px 12px;text-decoration:none;color:#fff;border-radius:10px}.mobile-menu a:hover{background:#181818}.mobile-menu.show{display:block}}
-  </style>
+    .mobile-menu {
+      display:none;
+      position:fixed;
+      inset:60px 12px auto 12px;
+      background:#0b0b0c;
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:10px;
+      z-index:60;
+    }
+    .mobile-menu a {
+      display:block; padding:10px 12px;
+      text-decoration:none; color:#fff; border-radius:10px;
+    }
+    .mobile-menu a:hover { background:#181818 }
+    .mobile-menu.show { display:block }
+  }
+</style>
 </head>
 <body>
   <header>
