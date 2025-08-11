@@ -171,18 +171,23 @@
     });
     menu?.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=> menu.classList.remove('show')));
 
-    // Scrollspy
-    const ids = ['about','dates','impressions','past','booking'];
-    const sections = ids.map(id=>document.getElementById(id));
-    const links = [...document.querySelectorAll('nav a')];
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          links.forEach(l=>l.classList.toggle('active', l.getAttribute('href') === `#${e.target.id}`));
-        }
-      })
-    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
-    sections.forEach(s=> s && io.observe(s));
-  </script>
+// Scrollspy
+const ids = ['about', 'dates', 'impressions', 'past', 'booking'];
+const sections = ids.map(id => document.getElementById(id));
+const links = [...document.querySelectorAll('nav a')];
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      // Entfernt bei allen Links die aktive Klasse
+      links.forEach(l => l.classList.remove('active'));
+      // Aktiviert nur den Link, der exakt zu diesem Abschnitt gehört
+      const activeLink = links.find(l => l.getAttribute('href') === `#${e.target.id}`);
+      if (activeLink) {
+        activeLink.classList.add('active');
+      }
+    }
+  });
+}, { rootMargin: '-50% 0px -50% 0px', threshold: 0 });
+sections.forEach(s => s && io.observe(s));
 </body>
 </html>
