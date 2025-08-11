@@ -83,6 +83,21 @@
       .mobile-menu a:hover{background:#181818}
       .mobile-menu.show{display:block}
     }
+      .insta-btn {
+    color: var(--text);
+    display: inline-flex;
+    align-items: center;
+    margin: 0 8px;
+    transition: color 0.3s ease;
+  }
+  .insta-btn:hover {
+    color: var(--accent);
+  }
+  .insta-btn svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+  }
   </style>
 </head>
 <body>
@@ -91,13 +106,20 @@
       <a class="brand" href="#top" aria-label="Startseite">
         <img src="https://mallejoerg.github.io/mallejoerg/assets/logo_pink1000.png" alt="Mallejörg Logo" />
       </a>
-      <nav aria-label="Hauptnavigation">
-        <a href="#about">Info</a>
-        <a href="#dates">Gigs</a>
-        <a href="#impressions">Impressionen</a>
-        <a href="#past">Vergangene Termine</a>
-        <a href="#booking">Booking & Social</a>
-      </nav>
+     <nav aria-label="Hauptnavigation">
+  <a href="#about">Info</a>
+  <a href="https://instagram.com/mallejoerg" target="_blank" class="insta-btn" aria-label="Instagram">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+    </svg>
+  </a>
+  <a href="#dates">Gigs</a>
+  <a href="#impressions">Impressionen</a>
+  <a href="#past">Vergangene Termine</a>
+  <a href="#booking">Booking & Social</a>
+</nav>
       <button class="menu-btn" id="menuBtn" aria-controls="mobileMenu" aria-expanded="false">Menü</button>
     </div>
     <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation mobil">
