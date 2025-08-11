@@ -81,6 +81,51 @@
       .mobile-menu a:hover{background:#181818}
       .mobile-menu.show{display:block}
     }
+    menu-btn {
+  display: none;
+  background: #141414;
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.menu-btn .hamburger {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #fff;
+  position: relative;
+}
+
+.menu-btn .hamburger::before,
+.menu-btn .hamburger::after {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 2px;
+  background: #fff;
+  left: 0;
+  transition: transform 0.3s ease;
+}
+
+.menu-btn .hamburger::before {
+  top: -6px;
+}
+
+.menu-btn .hamburger::after {
+  top: 6px;
+}
+
+/* Mobile sichtbar */
+@media (max-width: 700px) {
+  .menu-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 
     /* Insta-Icon im Header */
     .insta-btn { color: var(--text); display: inline-flex; align-items: center; margin: 0 8px; transition: color .3s ease; }
@@ -172,7 +217,9 @@
         <a href="#booking">Booking & Social</a>
          <a href="#impressum">Impressum</a>
       </nav>
-      <button class="menu-btn" id="menuBtn" aria-controls="mobileMenu" aria-expanded="false">Menü</button>
+<button class="menu-btn" id="menuBtn" aria-controls="mobileMenu" aria-expanded="false">
+  <span class="hamburger"></span>
+</button>
     </div>
     <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation mobil">
       <a href="https://instagram.com/mallejoerg" target="_blank" class="insta-btn" aria-label="Instagram">
