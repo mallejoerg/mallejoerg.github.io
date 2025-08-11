@@ -98,6 +98,22 @@
     height: 20px;
     display: block;
   }
+    .btn{
+  display:inline-flex; align-items:center; gap:10px;
+  padding:12px 16px; border-radius:999px; text-decoration:none;
+  font-weight:700; border:1px solid var(--border);
+  background:var(--card); color:#fff;
+  transition:transform .12s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+}
+.btn svg{ width:18px; height:18px; display:block }
+.btn:hover{ transform:translateY(-1px); box-shadow:0 10px 20px rgba(0,0,0,.25) }
+.btn-ig{ border-color: var(--accent);
+  background: linear-gradient(90deg, rgba(254,0,254,.15), rgba(254,0,254,.05)); }
+.btn-ig:hover{ background: linear-gradient(90deg, rgba(254,0,254,.25), rgba(254,0,254,.1)) }
+.btn-outline{ background:transparent }
+.btn-outline:hover{ background:rgba(255,255,255,.06) }
+.btn-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:8px }
+@media (max-width:700px){ .btn{ width:100%; justify-content:center } }
   </style>
 </head>
 <body>
@@ -206,11 +222,28 @@
       <div class="container">
         <h2>Booking / Social / Pressepaket</h2>
         <div class="card">
-          <p><strong>E-Mail/Booking</strong></p>
-          <p><a href="https://instagram.com/mallejoerg" target="_blank" rel="noopener">Instagram</a> · <a href="https://mallejoerg.github.io/mallejoerg/assets/mallejoerg_bundle.zip">Download Pressepaket</a></p>
-        </div>
-        <a class="to-top" href="#top">↑ Nach oben</a>
-      </div>
+         <p><strong>E-Mail/Booking</strong></p>
+<div class="btn-row">
+  <a class="btn btn-ig" href="https://instagram.com/mallejoerg" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+    </svg>
+    Instagram
+  </a>
+
+  <a class="btn btn-outline" href="https://mallejoerg.github.io/mallejoerg/assets/mallejoerg_bundle.zip">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+      <polyline points="7 10 12 15 17 10"/>
+      <line x1="12" y1="15" x2="12" y2="3"/>
+    </svg>
+    Download Pressepaket
+  </a>
+</div>
     </section>
 
     <!-- Deko-Foto -->
