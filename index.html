@@ -114,6 +114,30 @@
 .btn-outline:hover{ background:rgba(255,255,255,.06) }
 .btn-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:8px }
 @media (max-width:700px){ .btn{ width:100%; justify-content:center } }
+      .insta-btn, .booking-btn {
+    color: var(--text);
+    display: inline-flex;
+    align-items: center;
+    margin: 0 8px;
+    transition: color 0.3s ease;
+    text-decoration: none;
+    gap: 6px;
+  }
+  .insta-btn:hover, .booking-btn:hover {
+    color: var(--accent);
+  }
+  .insta-btn svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+  }
+  @media (max-width: 700px) {
+    .mobile-menu .insta-btn, .mobile-menu .booking-btn {
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+    }
+  }
   </style>
 </head>
 <body>
@@ -222,7 +246,10 @@
       <div class="container">
         <h2>Booking / Social / Pressepaket</h2>
         <div class="card">
-         <p><strong>E-Mail/Booking</strong></p>
+         <a href="mailto:kontakt@palmbeachbooking.de" target="_blank" class="booking-btn" aria-label="Booking">
+  <img src="https://mallejoerg.github.io/mallejoerg/assets/pbc_logo_transp_4000.png" alt="Palm Beach Concerts Logo" style="height:20px;">
+  Booking
+</a>
 <div class="btn-row">
   <a class="btn btn-ig" href="https://instagram.com/mallejoerg" target="_blank" rel="noopener">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
