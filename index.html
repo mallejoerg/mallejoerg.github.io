@@ -83,6 +83,34 @@
       .mobile-menu a:hover{background:#181818}
       .mobile-menu.show{display:block}
     }
+    .thumb {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  position: relative;
+  display: block;            /* <a> wird Block, damit 150×150 greift */
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;         /* schneidet passend zu */
+  transition: transform .25s ease;
+  display: block;
+}
+
+.thumb:hover img {
+  transform: scale(1.8);     /* Zoom im Rahmen */
+}
+
+/* Grid für Thumbs – 150er Kacheln mit Abstand */
+.gallery.grid-5 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+}
       .insta-btn {
     color: var(--text);
     display: inline-flex;
@@ -226,28 +254,46 @@
     <section id="fotos">
       <div class="container">
         <h2>Momente</h2>
-        <div class="gallery grid-5">
-          <img src="https://mallejoerg.github.io/assets/mallejoerg_gr_foto_ninareinert.jpg" alt="Mallejörg – Foto Nina Reinert"/>
-          <img src="https://mallejoerg.github.io/assets/received_968001044347864.jpeg" alt="Mallejörg"/>
-          <img src="https://mallejoerg.github.io/assets/mallejoerg_by_punkrockt---basti.jpg" alt="Mallejörg by Punkrockt!-Basti"/>
-          <img src="https://mallejoerg.github.io/assets/fiebertraeumchens_mallejoerg_insta.png" alt="Mallejörg – fieberträumchens"/>
-          <img src="https://mallejoerg.github.io/assets/mallejoerg_hut.jpg" alt="Mallejörg Hut"/>
-        </div>
-        <a class="to-top" href="#top">↑ Nach oben</a>
-      </div>
+       <div class="gallery grid-5">
+  <a class="thumb" href="/assets/mallejoerg_gr_foto_ninareinert.jpg" target="_blank" rel="noopener">
+    <img src="/assets/mallejoerg_gr_foto_ninareinert.jpg" alt="Mallejörg – Foto Nina Reinert">
+  </a>
+  <a class="thumb" href="/assets/received_968001044347864.jpeg" target="_blank" rel="noopener">
+    <img src="/assets/received_968001044347864.jpeg" alt="Mallejörg">
+  </a>
+  <a class="thumb" href="/assets/mallejoerg_by_punkrockt---basti.jpg" target="_blank" rel="noopener">
+    <img src="/assets/mallejoerg_by_punkrockt---basti.jpg" alt="Mallejörg by Punkrockt!-Basti">
+  </a>
+  <a class="thumb" href="/assets/fiebertraeumchens_mallejoerg_insta.png" target="_blank" rel="noopener">
+    <img src="/assets/fiebertraeumchens_mallejoerg_insta.png" alt="Mallejörg – fieberträumchens">
+  </a>
+  <a class="thumb" href="/assets/mallejoerg_hut.jpg" target="_blank" rel="noopener">
+    <img src="/assets/mallejoerg_hut.jpg" alt="Mallejörg Hut">
+  </a>
+</div>
     </section>
 
     <!-- Vergangene Termine (Auszug) -->
     <section id="past">
       <div class="container">
         <h2>Vergangene Termine (Auszug)</h2>
-        <div class="gallery grid-5">
-          <img src="https://mallejoerg.github.io/assets/pixxen.jpg" alt="Pixxen Festival"/>
-          <img src="https://mallejoerg.github.io/assets/connect.jpg" alt="Connect Festival"/>
-          <img src="https://mallejoerg.github.io/assets/sekerhuus.jpg" alt="Sekerhuus"/>
-          <img src="https://mallejoerg.github.io/assets/apenair.jpg" alt="APEN AIR"/>
-          <img src="https://mallejoerg.github.io/assets/sekerhuus2.jpg" alt="Punkrock-Schelle mit Mallejoerg und B-Shock"/>
-        </div>
+     <div class="gallery grid-5">
+  <a class="thumb" href="/assets/pixxen.jpg" target="_blank" rel="noopener">
+    <img src="/assets/pixxen.jpg" alt="Pixxen Festival">
+  </a>
+  <a class="thumb" href="/assets/connect.jpg" target="_blank" rel="noopener">
+    <img src="/assets/connect.jpg" alt="Connect Festival">
+  </a>
+  <a class="thumb" href="/assets/sekerhuus.jpg" target="_blank" rel="noopener">
+    <img src="/assets/sekerhuus.jpg" alt="Sekerhuus">
+  </a>
+  <a class="thumb" href="/assets/apenair.jpg" target="_blank" rel="noopener">
+    <img src="/assets/apenair.jpg" alt="APEN AIR">
+  </a>
+  <a class="thumb" href="/assets/sekerhuus2.jpg" target="_blank" rel="noopener">
+    <img src="/assets/sekerhuus2.jpg" alt="Punkrock-Schelle mit Mallejoerg und B-Shock">
+  </a>
+</div>
         <a class="to-top" href="#top">↑ Nach oben</a>
       </div>
     </section>
