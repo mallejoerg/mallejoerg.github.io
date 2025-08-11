@@ -1,329 +1,113 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mallejörg – Festival & Aftershow DJ</title>
-  <meta name="description" content="Mallejörg – Festival & Aftershow DJ. Termine, Impressionen, vergangene Gigs & Booking." />
-  <meta name="color-scheme" content="dark" />
-  <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@300;400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#000; --text:#fff; --muted:#a9a9a9; --accent:#fe00fe; /* exakt Logo-Pink */
-      --card:#0f0f10; --border:#1d1d1f; --radius:16px; --maxw:1100px; --pad:clamp(18px,3vw,28px);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;background:var(--bg);color:var(--text);
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      line-height:1.6;scroll-behavior:smooth; padding-top:60px;
-    }
-    h1,h2,h3{color:var(--accent);margin:0 0 10px;line-height:1.1;font-family:"Saira Condensed",ui-sans-serif,system-ui,Arial,sans-serif;font-weight:600;letter-spacing:.5px}
-    h1{font-size:clamp(2.1rem,4.8vw,3.4rem)}
-    h2{font-size:clamp(1.6rem,3.2vw,2.4rem)}
-    h3{font-size:clamp(1.1rem,2.2vw,1.4rem)}
-    p{margin:0 0 12px}
-    .muted{color:var(--muted)}
-    .container{width:min(100% - 32px, var(--maxw));margin-inline:auto}
-
-    /* Header: Start leicht transparent, beim Scrollen stärker */
-    header{
-      position:fixed; top:0; left:0; width:100%; z-index:50;
-      backdrop-filter:saturate(160%) blur(10px);
-      background: rgba(0,0,0,.60); /* sichtbar beim Seitenstart */
-      border-bottom:1px solid var(--border);
-      transition: background .3s ease, box-shadow .3s ease;
-    }
-    header.scrolled{ background: rgba(0,0,0,.85); box-shadow: 0 8px 20px rgba(0,0,0,.35); }
-
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0}
-    .brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
-    .brand img{height:36px;width:auto}
-    .brand strong{font-family:"Saira Condensed";font-size:1.4rem;letter-spacing:.4px}
-    nav{display:flex;gap:6px}
-    nav a{color:var(--text);text-decoration:none;padding:8px 10px;border-radius:10px;opacity:.9}
-    nav a:hover{background:#141414;opacity:1}
-    nav a.active{background:var(--accent);color:#000;font-weight:600}
-    /* Hover auch für aktiven Link in Logo-Pink */
-    nav a:hover,
-    nav a.active:hover{background:var(--accent);color:#000}
-
-    .menu-btn{display:none}
-    .mobile-menu{display:none}
-
-    .hero{padding:clamp(48px,8vw,96px) 0}
-    .hero-wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(20px,4vw,44px);align-items:center}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:var(--pad);box-shadow:0 20px 40px rgba(0,0,0,.25)}
-    .cta{display:inline-block;padding:12px 18px;border-radius:999px;background:var(--accent);color:#000;text-decoration:none;font-weight:700}
-    .cta:hover{filter:brightness(.95)}
-    .to-top{display:inline-block;margin-top:12px;color:var(--muted);text-decoration:none}
-    .to-top:hover{color:#fff;text-decoration:underline}
-
-    section{padding:clamp(34px,6vw,70px) 0; scroll-margin-top:70px}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    .grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-    .gallery img{width:100%;height:auto;border-radius:12px;border:1px solid var(--border)}
-    ul{margin:0;padding-left:18px}
-    li{margin-bottom:6px}
-    del{opacity:.6}
-    footer{border-top:1px solid var(--border);padding:18px 0;color:var(--muted);font-size:.95rem}
-
-    @media (max-width: 1000px){.grid-5{grid-template-columns:repeat(3,1fr)}}
-    @media (max-width: 700px){
-      .hero-wrap{grid-template-columns:1fr}
-      .grid-3{grid-template-columns:1fr}
-      .grid-5{grid-template-columns:1fr}
-      nav{display:none}
-      .menu-btn{display:inline-flex;align-items:center;gap:8px;background:#141414;color:#fff;border:1px solid var(--border);padding:8px 12px;border-radius:10px}
-      .mobile-menu{display:none;position:fixed;inset:60px 12px auto 12px;background:#0b0b0c;border:1px solid var(--border);border-radius:14px;padding:10px;z-index:60}
-      .mobile-menu a{display:block;padding:10px 12px;text-decoration:none;color:#fff;border-radius:10px}
-      .mobile-menu a:hover{background:#181818}
-      .mobile-menu.show{display:block}
-    }
-      .insta-btn {
-    color: var(--text);
-    display: inline-flex;
-    align-items: center;
-    margin: 0 8px;
-    transition: color 0.3s ease;
+<style>
+  :root {
+    --bg: #000;
+    --text: #fff;
+    --accent: #fe00fe;
+    --card: #111;
+    --border: #333;
   }
-  .insta-btn:hover {
+
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
     color: var(--accent);
+    font-family: 'Squeeze', sans-serif;
   }
-  .insta-btn svg {
-    width: 20px;
-    height: 20px;
-    display: block;
+
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--bg);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    z-index: 1000;
   }
-    .btn{
-  display:inline-flex; align-items:center; gap:10px;
-  padding:12px 16px; border-radius:999px; text-decoration:none;
-  font-weight:700; border:1px solid var(--border);
-  background:var(--card); color:#fff;
-  transition:transform .12s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
-}
-.btn svg{ width:18px; height:18px; display:block }
-.btn:hover{ transform:translateY(-1px); box-shadow:0 10px 20px rgba(0,0,0,.25) }
-.btn-ig{ border-color: var(--accent);
-  background: linear-gradient(90deg, rgba(254,0,254,.15), rgba(254,0,254,.05)); }
-.btn-ig:hover{ background: linear-gradient(90deg, rgba(254,0,254,.25), rgba(254,0,254,.1)) }
-.btn-outline{ background:transparent }
-.btn-outline:hover{ background:rgba(255,255,255,.06) }
-.btn-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:8px }
-@media (max-width:700px){ .btn{ width:100%; justify-content:center } }
-      .insta-btn, .booking-btn {
+
+  .brand img {
+    height: 40px;
+  }
+
+  .nav-btn {
     color: var(--text);
     display: inline-flex;
     align-items: center;
-    margin: 0 8px;
-    transition: color 0.3s ease;
-    text-decoration: none;
     gap: 6px;
+    padding: 6px 12px;
+    border: 2px solid var(--accent);
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
-  .insta-btn:hover, .booking-btn:hover {
-    color: var(--accent);
+
+  .nav-btn:hover {
+    background-color: var(--accent);
+    color: #000;
   }
-  .insta-btn svg {
+
+  .nav-btn svg {
     width: 20px;
     height: 20px;
     display: block;
   }
+
+  .insta-btn img,
+  .booking-btn img {
+    display: block;
+  }
+
+  .booking-btn img {
+    height: 35px;
+  }
+
+  section {
+    padding: 80px 20px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+
+  .to-top {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .to-top:hover {
+    text-decoration: underline;
+  }
+
+  footer {
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    font-size: 0.9rem;
+    background: var(--card);
+  }
+
   @media (max-width: 700px) {
-    .mobile-menu .insta-btn, .mobile-menu .booking-btn {
+    .mobile-menu .nav-btn {
       padding: 10px 12px;
       display: flex;
       align-items: center;
     }
   }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="container nav">
-      <a class="brand" href="#top" aria-label="Startseite">
-        <img src="https://mallejoerg.github.io/mallejoerg/assets/logo_pink1000.png" alt="Mallejörg Logo" />
-      </a>
-     <nav aria-label="Hauptnavigation">
-  <a href="https://instagram.com/mallejoerg" target="_blank" class="insta-btn" aria-label="Instagram">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
-      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-    </svg>
-  </a>
-       <a href="#about">Info</a>
-  <a href="#dates">Gigs</a>
-  <a href="#impressions">Impressionen</a>
-  <a href="#past">Vergangene Termine</a>
-  <a href="#booking">Booking & Social</a>
-</nav>
-      <button class="menu-btn" id="menuBtn" aria-controls="mobileMenu" aria-expanded="false">Menü</button>
-    </div>
-    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation mobil">
-      <a href="https://instagram.com/mallejoerg" target="_blank" class="insta-btn" aria-label="Instagram">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-       stroke-linecap="round" stroke-linejoin="round">
-    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-  </svg>
-</a>
-      <a href="#about">Info</a>
-      <a href="#dates">Gigs</a>
-      <a href="#impressions">Impressionen</a>
-      <a href="#past">Vergangene Termine</a>
-      <a href="#booking">Booking & Social</a>
-    </div>
-  </header>
-
-  <main id="top">
-    <!-- HERO / ABOUT (Texte 1:1) -->
-    <section id="about" class="hero container">
-      <div class="hero-wrap">
-        <div>
-          <h1>Festival & Aftershow DJ</h1>
-          <p>Mallejörg liefert kleine und große DJ-Sets aus den Genres Elektro, Hip-Hop, 80er/90er-Hits oder Punkrock. Für 20 Minuten oder auch einen ganzen Abend. Inklusive Schnapsrunde, Ballons, Konfettikanone und trashiger Bühnendeko.</p>
-          <p>Der perfekte Stilbruch für Festivals in den Umbaupausen oder für den Aftershow-Abriss oder als Preshow / Aftershow-Act. Trash as trash can!</p>
-          <p>Keine Mallehits. Keine sexistischen, rassistischen oder homophoben Inhalte. Einfach nur Party. Neben privaten Shows trat er u.a. beim APEN AIR Festival, beim Connect Festival oder beim Pixxen Festival auf.</p>
-          <a class="to-top" href="#top">↑ Nach oben</a>
-        </div>
-        <div class="card">
-          <img src="https://mallejoerg.github.io/mallejoerg/assets/hero1.jpg" alt="Mallejörg live on stage" style="width:100%;height:auto;border-radius:12px"/>
-        </div>
-      </div>
-    </section>
-
-    <!-- Dates -->
-    <section id="dates">
-      <div class="container">
-        <h2>Na, wo isser denn?</h2>
-        <ul>
-          <li><strong>01.08.2025</strong> – Connect Festival, Apen, Aftershow</li>
-          <li>28.08.2025 – Mein Haus Am See, Berlin – House</li>
-          <li>29.08.2025 – Don't Panic, Essen, Aftershow Chefdenker – <a class="cta" href="https://store.sunnybastards.de/Tickets-Konzerte/Chefdenker-Ticket-29-08-25-Dont-Panic-Essen%3A%3A6702.html" target="_blank" rel="noopener">Tickets</a></li>
-          <li><del>30.08.2025 – Seker Huus, Uplengen-Hollen</del></li>
-          <li>26.10.2025 – Mokum, Berlin – Too Much of Everything – Night (80s, 90s, Indie, Electro, Pop, Trash)</li>
-        </ul>
-        <a class="to-top" href="#top">↑ Nach oben</a>
-      </div>
-    </section>
-
-    <!-- Impressionen (5 Bilder) -->
-    <section id="impressions">
-      <div class="container">
-        <h2>Impressionen</h2>
-        <div class="gallery grid-5">
-          <img src="https://mallejoerg.github.io/mallejoerg/assets/mallejoerg_gr_foto_ninareinert.jpg" alt="Mallejörg – Foto Nina Reinert"/>
-          <img src="https://mallejoerg.github.io/mallejoerg/assets/received_968001044347864.jpeg" alt="Mallejörg"/>
-          <img src="https://mallejoerg.github.io/mallejoerg/assets/mallejoerg_by_punkrockt---basti.jpg" alt="Mallejörg by Punkrockt!-Basti"/>
-          <img src="https://mallejoerg.github.io/mallejoerg/assets/fiebertraeumchens_mallejoerg_insta.png" alt="Mallejörg – fieberträumchens"/>
-          <img src="https://mallejoerg.github.io/mallejoerg/assets/mallejoerg_hut.jpg" alt="Mallejörg Hut"/>
-        </div>
-        <a class="to-top" href="#top">↑ Nach oben</a>
-      </div>
-    </section>
-
-    <!-- Vergangene Termine (Auszug) -->
-    <section id="past">
-      <div class="container">
-        <h2>Vergangene Termine (Auszug)</h2>
-        <div class="gallery grid-5">
-          <img src="https://mallejoerg.github.io/mallejoerg/assets/pixxen.jpg" alt="Pixxen Festival"/>
-          <img src="https://mallejoerg.github.io/mallejoerg/assets/connect.jpg" alt="Connect Festival"/>
-          <img src="https://mallejoerg.github.io/mallejoerg/assets/sekerhuus.jpg" alt="Sekerhuus"/>
-          <img src="https://mallejoerg.github.io/mallejoerg/assets/apenair.jpg" alt="APEN AIR"/>
-          <img src="https://mallejoerg.github.io/mallejoerg/assets/sekerhuus2.jpg" alt="Punkrock-Schelle mit Mallejoerg und B-Shock"/>
-        </div>
-        <a class="to-top" href="#top">↑ Nach oben</a>
-      </div>
-    </section>
-
-    <!-- Booking / Social / Pressepaket -->
-    <section id="booking">
-      <div class="container">
-        <h2>Booking / Social / Pressepaket</h2>
-        <div class="card">
-         <a href="mailto:kontakt@palmbeachbooking.de" target="_blank" class="booking-btn" aria-label="Booking">
-  <img src="https://mallejoerg.github.io/mallejoerg/assets/pbc_logo_transp_4000.png" alt="Palm Beach Concerts Logo" style="height:20px;">
-  Booking
-</a>
-<div class="btn-row">
-  <a class="btn btn-ig" href="https://instagram.com/mallejoerg" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-    </svg>
-    Instagram
-  </a>
-
-  <a class="btn btn-outline" href="https://mallejoerg.github.io/mallejoerg/assets/mallejoerg_bundle.zip">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-      <polyline points="7 10 12 15 17 10"/>
-      <line x1="12" y1="15" x2="12" y2="3"/>
-    </svg>
-    Download Pressepaket
-  </a>
-</div>
-    </section>
-
-    <!-- Deko-Foto -->
-    <section>
-      <div class="container">
-        <div class="card">
-          <img src="https://mallejoerg.github.io/mallejoerg/assets/mallejoerg_stage.jpg" alt="Mallejörg stage decoration" style="width:100%;height:auto;border-radius:12px"/>
-        </div>
-        <a class="to-top" href="#top">↑ Nach oben</a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <small>© 2025 Mallejörg // Fotos: Nina Reinert, Susi Adebahr, Punk-Rockt!-Basti, Robin Riot, Simone Otto</small>
-    </div>
-  </footer>
-
-  <script>
-    // Mobile Menü
-    const btn = document.getElementById('menuBtn');
-    const menu = document.getElementById('mobileMenu');
-    btn?.addEventListener('click', ()=>{
-      if (window.innerWidth > 700) return; // nur mobil toggeln
-      const open = menu.classList.toggle('show');
-      btn.setAttribute('aria-expanded', String(open));
-    });
-    menu?.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=> menu.classList.remove('show')));
-
-    // Scrollspy (präziser)
-    const ids = ['about','dates','impressions','past','booking'];
-    const sections = ids.map(id=>document.getElementById(id));
-    const links = [...document.querySelectorAll('nav a')];
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          links.forEach(l=>l.classList.remove('active'));
-          const activeLink = links.find(l => l.getAttribute('href') === `#${e.target.id}`);
-          if (activeLink) activeLink.classList.add('active');
-        }
-      })
-    }, { rootMargin: '-50% 0px -50% 0px', threshold: 0 });
-    sections.forEach(s=> s && io.observe(s));
-
-    // Header Fade beim Scrollen
-    const headerEl = document.querySelector('header');
-    const onScroll = () => {
-      if (window.scrollY > 50) headerEl.classList.add('scrolled');
-      else headerEl.classList.remove('scrolled');
-    };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-  </script>
-</body>
-</html>
+</style>
